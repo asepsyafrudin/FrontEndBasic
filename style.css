@@ -1,0 +1,164 @@
+.resumeTitle {
+   text-align: center; 
+   padding-left: 70px ;
+   position: relative;
+  
+}
+
+.resume {
+    font-size: 15px;
+    width: 50%;
+    background-color: rgb(3, 3, 77);
+    color: white;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+}
+
+.imageTitle{
+    padding-top: 30px;
+    padding-left: 100px;
+    text-align: right;
+}
+
+.circleImage {
+    padding: 20px;
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border-radius: 150px;
+    background-color: white;
+    
+}
+
+.frameImage {
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-radius: 125px;
+    overflow: hidden;
+}
+
+.frameImage > img {
+    width: 250px;
+}
+
+.background {
+    height: 250px;
+    background-color: rgb(3, 3, 77);
+    position: relative;
+    z-index: -5;
+}
+.profile{
+    padding-top: 40px;
+    
+}
+
+.nameCover {
+    color: white;
+    margin-top: 90px;
+    padding-left: 20px;
+}
+
+.nameCover > h1 {
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.contentProfile{
+    text-align: right;
+    border-bottom-style: dashed;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.row {
+    padding-left: 30px;
+}
+
+.subProfile {
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 35px
+}
+
+.subProfile > h3 {
+    line-height: 25px;
+}
+
+
+.icon {
+    text-align: right;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+}
+
+.contact {
+    text-align: right;
+    margin-bottom: 50px;
+}
+
+.jobTitle {
+    border-bottom-style: outset;
+    border-color: blueviolet;
+    padding-top: 15px;
+}
+
+.contentDetailProfile {
+    background-color: rgb(181, 161, 207);
+    padding-right: 10px;
+}
+
+.titleDetailProfile {
+    border-bottom-style: dashed;
+    margin-top: 40px;
+    padding-left: 20px;
+}
+
+.title {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+.margin {
+    margin-top: 15px;
+}
+
+.footer {
+    height: 50px;
+    background-color: rgb(3, 1, 82);
+    color: white;
+    text-align: center;
+}
+
+.footer > h5 {
+    line-height: 50px;
+}
+
+.topBackground{
+    height: 30px;
+    background-color: rgb(3, 3, 77);
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .blue {
+    background-color: rgb(15, 16, 26) !important; 
+    
+  }
+
+
+
