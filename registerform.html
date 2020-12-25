@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Data User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="registerform.css">
+    <script defer src="registerform.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form style="border:1px solid #ccc" onsubmit="saveData()" name="inputData">
+            <div class="container">
+              <h1>Sign Up</h1>
+              <p>Please fill in this form to create an account.</p>
+              <hr>
+          
+              <label for="name"><b>Name</b></label>
+              <input type="text" placeholder="Enter Name" name="name" required>
+              <input type="hidden" name="index" />
+          
+              <label for="address"><b>Address</b></label>
+              <input type="text" placeholder="Enter Address" name="address" required>
+
+              <label for="religion"><b>Religion</b></label>
+              <select id="religion" name="religion">
+                    <option value="Kristen">Kristen</option>
+                    <option value="Katolik">Katolik</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Budha">Budha</option>
+                    <option value="Islam">Islam</option>
+              </select>
+              
+              <label for="hobby"><b>Hobby</b></label><br>
+              <div class="form-check form-check-inline"form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Badminton">
+                <label class="form-check-label" for="inlineCheckbox1">Badminton</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Renang" >
+                <label class="form-check-label" for="inlineCheckbox1">Renang</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Sepeda">
+                <label class="form-check-label" for="inlineCheckbox1">Sepeda</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Football">
+                <label class="form-check-label" for="inlineCheckbox1">Football</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Basket">
+                <label class="form-check-label" for="inlineCheckbox1">Basket</label>
+              </div>
+              <br>
+
+
+              <label for="Gender"><b>Gender</b></label><br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="gender_laki-laki" value="Laki-Laki">
+                <label class="form-check-label" for="inlineRadio1">Laki Laki</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="gender_perempuan" value="Perempuan">
+                <label class="form-check-label" for="inlineRadio1">Perempuan</label>
+              </div>
+              <br>
+              <br>
+              <div class="clearfix" >
+                <button type="submit" class="signupbtn">Sign Up</button>
+              </div>
+            </div>
+          </form>
+    </div>
+    <div class="container">
+        <input type="text" id="mySearch" onkeyup="searchData(this)" placeholder="Search for names..">
+    </div>
+    <div class="container">
+        <table class="table" type="listData">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Hobby</th>
+                <th scope="col">Gender</th>
+                <th scope="col" colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" name="pagination">
+       </ul>
+    </nav>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+</html>

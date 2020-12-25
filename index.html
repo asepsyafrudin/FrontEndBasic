@@ -40,19 +40,22 @@
                     </div>
                     <div class="subProfile">
                         <h3><b>Name</b></h3>
-                        <h4>Asep Syafrudin</h4>
+                        <h4 id="name">Asep Syafrudin</h4>
                     </div>
                     <div class="subProfile">
                         <h3><b>Date of Birth</b></h3>
-                        <h4>Jakarta, 22 July 1993</h4>
+                        <h4 id="date">Jakarta, 22 July 1993</h4>
                     </div>
                     <div class="subProfile">
                         <h3><b>Address</b></h3>
-                        <h4>Jalan Kramat pulo dalam II gg 18 No B169A, RT 001 / RW 008
+                        <h4 id = "address">Jalan Kramat pulo dalam II gg 18 No B169A, RT 001 / RW 008
                             Kelurahan Kramat , Kecamatan Senen, Jakart Pusat
                             10450
                         </h4>
                     </div>
+                    <button onclick="prevFunction()" type="submit">Prev</button>
+                    <button onclick="nextFunction()" type="submit">Next</button>
+
                 </div>
                 <div class="profile">
                     <div class="contentProfile">
@@ -558,6 +561,38 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <form onsubmit="submitForm(event)">
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">Name</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="nameSubmit" name="fname" placeholder="Your name..">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="birth">Date of Birth</label>
+              </div>
+              <div class="col-75">
+                <input type="date" id="dateSubmit" name="birth">
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                  <label for="address">Address</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="addressSubmit" name="address" placeholder="Your Address" >
+                </div>
+              </div>  
+            <div class="row">
+              <input type="submit" value="Submit" >
+            </div>
+            </form>
+          </div>
+    
         <div class="footer">
             <h5>&copy; Copyright 2020 by Asep Syafrudin</h5>
         </div>
