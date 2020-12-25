@@ -1,97 +1,104 @@
 var arrayObject = [];
+var id = 1
 
-function submitForm(event) {
-    event.preventDefault();
-    var nameSubmit = document.getElementById("name").value;
-    var addressSubmit = document.getElementById("address").value;
-    var genderSubmit = document.getElementById("gender").value;
-    var hobbySubmit = document.getElementById("hobby").value;
-
-    console.log(nameSubmit);
-    console.log(addressSubmit);
-    console.log(genderSubmit);
-    console.log(hobbySubmit);
-
-    var table = document.getElementById("myTable");
-    var row = table.insertRow(1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-
-    cell1.innerHTML = nameSubmit;
-    cell2.innerHTML = addressSubmit;
-    cell3.innerHTML = genderSubmit;
-    cell4.innerHTML = hobbySubmit;
-
-    var objectData = {};
-    objectData.name = nameSubmit,
-    objectData.address = addressSubmit,
-    objectData.gender = genderSubmit,
-    objectData.hobby = hobbySubmit
-    
-    arrayObject.push(objectData);
-
+//Object Constructor 
+function ObjectData(id, name , address, gender, hobby) {
+    this.id = id
+    this.name = name ;
+    this.address = address;
+    this.gender = gender;
+    this.hobby = hobby;
 }
 
-function searchForm(event) {
+function submitForm(idData) {
     event.preventDefault();
-    var searchSubmit = document.getElementById("search").value;
-    var trQuantity = document.querySelectorAll("tr");
+    var nameSubmit = document.getElementById("name");
+    var addressSubmit = document.getElementById("address");
+    var genderSubmit = document.getElementById("gender");
+    var hobbySubmit = document.getElementById("hobby");
 
-    console.log(searchSubmit);
-    console.log(trQuantity);
+    if(idData == null) {
+        arrayObject.push(new ObjectData(id , nameSubmit.value, addressSubmit.value, genderSubmit.value, hobbySubmit.value));
+        showData();
+        id +=1;
+        document.querySelector('form').reset();
+    } else {
+        arrayObject[(idData-1)].name = nameSubmit.value;
+        arrayObject[(idData-1)].address = addressSubmit.value;
+        arrayObject[(idData-1)].gender = genderSubmit.value;
+        arrayObject[(idData-1)].hobby= hobbySubmit.value;
+        var inputForm = document.querySelector("form[name=formSubmit]")
+        inputForm.setAttribute("onsubmit" , `submitForm()`);
+        nameSubmit.removeAttribute("value");
+        addressSubmit.removeAttribute("value");
+        genderSubmit.removeAttribute("value");
+        hobbySubmit.removeAttribute("value");
+        document.querySelector('form').reset();
+        showData();      
+    }
+}
+
+function searchData(element) {
+    var searchSubmit = element.value;
+    var trQuantity = document.querySelectorAll("tr");
 
     for (let index = 1; index < trQuantity.length; index++) {
         trQuantity[index].remove();
     }
 
-    for (let index = 0; index < arrayObject.length; index++) {
-      if(
-          arrayObject[index].name == searchSubmit ||
-          arrayObject[index].address == searchSubmit
-          ) {
-            console.log( arrayObject[index].name);
-            var table = document.getElementById("myTable");
-            var row = table.insertRow(1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
+    const filterData = arrayObject.filter((value) => {
+        return value.name.includes(searchSubmit) || value.address.includes(searchSubmit)
+    })
 
-            cell1.innerHTML = arrayObject[index].name;
-            cell2.innerHTML = arrayObject[index].address;
-            cell3.innerHTML = arrayObject[index].gender;
-            cell4.innerHTML = arrayObject[index].hobby;
-          }
-    }
-
+    showData(filterData);
 }
 
 function findAll(event) {
     event.preventDefault();
-    var trQuantity = document.querySelectorAll("tr");
-
-    for (let index = 1; index < trQuantity.length; index++) {
-        trQuantity[index].remove();
-    }
-
-    for (let index = 0; index < arrayObject.length; index++) {
-        
-        console.log( arrayObject[index].name);
-        var table = document.getElementById("myTable");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-
-        cell1.innerHTML = arrayObject[index].name;
-        cell2.innerHTML = arrayObject[index].address;
-        cell3.innerHTML = arrayObject[index].gender;
-        cell4.innerHTML = arrayObject[index].hobby;
-            
-      }
-
+    showData();
 }
+
+var showData = function(data = arrayObject) {
+    const table = document.querySelector("#myTable tbody");
+    const listData = data.map(value => {
+        return `
+            <tr>
+                <td>${value.name}</td>
+                <td>${value.address}</td>
+                <td>${value.gender}</td>
+                <td>${value.hobby}</td>
+                <td><button onclick = "editData(${value.id})" >Edit</button></td>
+                <td><button onclick = "deleteData(${value.id})" >Delete</button></td>
+            </tr>
+        `       
+    })
+
+    table.innerHTML = listData.join("");
+}
+
+var deleteData = idData => {
+    arrayObject.map((value, index) => {
+        if(value.id == idData) {
+            arrayObject.splice(index, 1);
+            showData()
+        }
+    })
+        
+}
+
+var editData = idData => {
+    arrayObject.map((value, index) => {
+        if(value.id == idData) {
+            document.getElementById("name").setAttribute("value", arrayObject[index].name);
+            document.getElementById("address").setAttribute("value", arrayObject[index].address);
+            document.getElementById("gender").setAttribute("value", arrayObject[index].gender);
+            document.getElementById("hobby").setAttribute("value", arrayObject[index].hobby);
+            var inputForm = document.querySelector("form[name=formSubmit]")
+            inputForm.setAttribute("onsubmit" , `submitForm(${arrayObject[index].id})`);
+            showData()
+        }
+    })
+}
+
+
 

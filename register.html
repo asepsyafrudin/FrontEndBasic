@@ -12,13 +12,13 @@
     <div class="container">
       <div><h1>Form Register Data</h1></div>
       <div class="container">
-        <form onsubmit="submitForm(event)">
+        <form onsubmit="submitForm()" name="form">
         <div class="row">
           <div class="col-25">
             <label for="name">Name</label>
           </div>
           <div class="col-75">
-            <input type="text" id="name" name="name" placeholder="Your name..">
+            <input type="text" id="name" name="name" value="" placeholder="Your name..">
           </div>
         </div>
         <div class="row">
@@ -26,7 +26,7 @@
             <label for="address">Address</label>
           </div>
           <div class="col-75">
-            <input type="text" id="address" name="address">
+            <input type="text" id="address" value="" name="address" placeholder="Address..">
           </div>
         </div>
         <div class="row">
@@ -34,7 +34,7 @@
               <label for="address">gender</label>
             </div>
             <div class="col-75">
-              <input type="text" id="gender" name="address" placeholder="" >
+              <input type="text" id="gender" value="" name="address" placeholder="Gender.." >
             </div>
           </div>  
           <div class="row">
@@ -42,31 +42,28 @@
               <label for="address">hobby</label>
             </div>
             <div class="col-75">
-              <input type="text" id="hobby" name="address" placeholder="" >
+              <input type="text" id="hobby" value="" name="address" placeholder="Hobby.." >
             </div>
           </div>  
         <div class="row">
-          <input type="submit" value="Submit" >
+          <input type="submit" value="submit" >
         </div>
         </form>
     </div>
     <br>
 
     <div class="container">
-      <form onsubmit="searchForm(event)">
+     
         <div class="row">
           <div class="col-25">
             <label for="address">Search</label>
           </div>
           <div class="col-75">
-            <input type="text" id="search" name="search"  placeholder="" >
+            <input type="text" id="search" name="search" onkeyup="searchData(this)" placeholder="" >
           </div>
         </div>  
-      <div class="row">
-        <input type="submit" value="Submit" >
-      </div>
       <br>
-      </form>
+      
       <form onsubmit="findAll(event)"> 
       <div class="row">
         <input type="submit" value="Reset" >
@@ -83,6 +80,8 @@
             <th scope="col">Address</th>
             <th scope="col">Gender</th>
             <th scope="col">Hobby</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -90,6 +89,16 @@
         </tbody>
       </table>
     </div>
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="#">1</a>
+      <a class="active" href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
     </div>
+  </div>
 </body>
 </html>
