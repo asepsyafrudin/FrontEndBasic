@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <form style="border:1px solid #ccc" onsubmit="saveData()" name="inputData">
+        <form style="border:1px solid #ccc" onsubmit="saveData(checkFilter())" name="inputData">
             <div class="container">
               <h1>Sign Up</h1>
               <p>Please fill in this form to create an account.</p>
@@ -19,6 +19,7 @@
               <label for="name"><b>Name</b></label>
               <input type="text" placeholder="Enter Name" name="name" required>
               <input type="hidden" name="index" />
+              <input type="hidden" name="idUser"/>
           
               <label for="address"><b>Address</b></label>
               <input type="text" placeholder="Enter Address" name="address" required>
@@ -74,7 +75,7 @@
           </form>
     </div>
     <div class="container">
-        <input type="text" id="mySearch" onkeyup="searchData(this)" placeholder="Search for names..">
+        <input type="text" id="mySearch" onkeyup="searchData(this)" placeholder="Search for names and address..">
     </div>
     <div class="container">
         <table class="table" type="listData">
@@ -90,7 +91,7 @@
               </tr>
             </thead>
             <tbody>
-             
+             <!-- isi yang di dalam table melalui javascript-->
             </tbody>
           </table>
     </div>
