@@ -98,7 +98,7 @@ let total_data_per_page = 5;
 const pagination = (e=1, data = globalData) => {
     let page = ""
     let totalPages = Math.ceil(data.length/total_data_per_page);
-    let maxPagesShow = 3;
+    let maxPagesShow = 5;
     currentPage = e;
     let startPage = 0;
     let endPage = 0;
@@ -124,7 +124,7 @@ const pagination = (e=1, data = globalData) => {
                 // current page somewhere in the middle
                 startPage = currentPage - maxPagesBeforeCurrentPage;
                 endPage = currentPage + maxPagesAfterCurrentPage;
-        }
+            }
         }
         page += `
             <li class="page-item">
@@ -143,7 +143,10 @@ const pagination = (e=1, data = globalData) => {
             </li>
         `
         document.querySelector(".pagination").innerHTML = page;
+    } else{
+        document.querySelector(".pagination").innerHTML=" ";
     }
+    
 }
 
 const nextpage = (data = globalData) => {
@@ -187,18 +190,16 @@ const getEl = el => {
 
 //show data
 // fn to save data
-let StartIdUser = globalData.length+1;
-const saveData = async (data = globalData) => {
-    event.preventDefault()
 
+const saveData = (data = globalData) => {
+    event.preventDefault()
+    let startIdUser = globalData.length+1;
     const form = document.inputData
     // if ? value true : value false
-    let idUser = form.idUser.value ? form.idUser.value : StartIdUser ;
-
+    let idUser = form.idUser.value ? form.idUser.value : startIdUser ;
     if (idUser == form.idUser.value) {
         for (let index = 0; index < globalData.length; index++) {
             if(globalData[index].id == idUser) {
-                console.log(updateData);
                 globalData[index].name = form.name.value;
                 globalData[index].address = form.address.value;
                 globalData[index].religion = form.religion.value;
@@ -218,10 +219,16 @@ const saveData = async (data = globalData) => {
             getValueCheckbox("hobby[]"), 
             form.gender.value
         )
-        await globalData.push(newData);
+        globalData.push(newData);
     }
 
-    newshow(currentPage, data);
+    //for checking the data if null which one to show.
+    if(data.length !== 0) {
+        newshow(currentPage, data);
+    } else {
+        newshow(currentPage,globalData);
+    }
+   
     form.reset()
 }
 
@@ -244,12 +251,12 @@ const setValueCheckbox = (el, values) => {
 
 // set form's values
 const updateData = (el, data=globalData) => {
-    el.closest("tr").style.backgroundColor = "lightgrey"
-
+    el.closest("tr").style.backgroundColor = "red";
     const indexData = el.getAttribute("index")
     const selectedData = data[indexData]
     const form = document.inputData
 
+    //updating data in global data
     form.idUser.value = selectedData.id
     form.name.value = selectedData.name
     form.gender.value = selectedData.gender
@@ -257,6 +264,7 @@ const updateData = (el, data=globalData) => {
     form.address.value = selectedData.address
     form.index.value = indexData
 
+    //set value in form 
     setValueCheckbox("hobby[]", selectedData.hobby)
 }
 
@@ -268,15 +276,14 @@ const deleteData = async (el , data = globalData) => {
             await globalData.splice(index , 1);
         }        
     }
-
+    //for delete array in data array when search feature is running
     for (let index = 0; index < data.length; index++) {
         if (data[index].id == idData) {
             await data.splice(index , 1);
         }     
-        
     }
-    var totalPages = Math.ceil(data.length/total_data_per_page);
-    
+    //show pagination after delete data , it wil check current total page
+    let totalPages = Math.ceil(data.length/total_data_per_page);
     if(currentPage >= totalPages) {
         currentPage = totalPages;
         newshow(currentPage, data);
@@ -286,7 +293,7 @@ const deleteData = async (el , data = globalData) => {
 }
 
 // fn to filter data using typed value
-const searchData = self => {
+const filterData = self => {
     const valueSearch = self.value.toLowerCase();
 
     const filteredData = globalData.filter(value => {
@@ -294,11 +301,15 @@ const searchData = self => {
         const addressData = value.name.toLowerCase();
         return nameData.includes(valueSearch) || addressData.includes(valueSearch)
     })
-    newshow(1,filteredData)
     return filteredData;
 }
 
-//function utama untuk menampilkan data
+//search data 
+const searchData = self => {
+    newshow(1, filterData(self));
+}
+
+//function to show the data
 const show5data = function (page , data = globalData) {
     if (page > 0) {
         var total_tr ="";
@@ -326,18 +337,18 @@ const show5data = function (page , data = globalData) {
     return total_tr;
 }
 
-//function untuk menampilkan data dimana membutuhkan parameter page dan data yang akan di render
-function newshow(page , data) {
+//function to call the show function
+ async function newshow(page , data) {
     const table = getEl("table[type=listData] tbody")
     if(show5data(page , data ) === undefined) {
         table.innerHTML =""
     } else {
-        table.innerHTML = show5data(page, data); 
-        
+        let tr = show5data(page, data); 
+        table.innerHTML = tr;
     }
 }
 
-//menginialisasi data awal yang akan di tampilkan merujuk ke halaman 1
+//initialization the first page to show
 function init() {
     newshow(1)
 }
@@ -349,8 +360,8 @@ untuk di cari sehingga data yang di tampilkan pada pagination bisa sesuai
 
 function checkFilter(){
     let key = document.querySelector("#mySearch");
-    let arraySearch = searchData(key);
-    return arraySearch;
+    let arraySearch = filterData(key);
+    return arraySearch;    
 }
 
 /**
