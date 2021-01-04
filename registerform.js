@@ -98,7 +98,7 @@ let total_data_per_page = 5;
 const pagination = (e=1, data = globalData) => {
     let page = ""
     let totalPages = Math.ceil(data.length/total_data_per_page);
-    let maxPagesShow = 5;
+    let maxPagesShow = 4;
     currentPage = e;
     let startPage = 0;
     let endPage = 0;
@@ -193,7 +193,7 @@ const getEl = el => {
 
 const saveData = (data = globalData) => {
     event.preventDefault()
-    let startIdUser = globalData.length+1;
+    let startIdUser = new Date();
     const form = document.inputData
     // if ? value true : value false
     let idUser = form.idUser.value ? form.idUser.value : startIdUser ;
@@ -223,10 +223,8 @@ const saveData = (data = globalData) => {
     }
 
     //for checking the data if null which one to show.
-    if(data.length !== 0) {
-        newshow(currentPage, data);
-    } else {
-        newshow(currentPage,globalData);
+    if(data.length != 0) {
+        newshow(currentPage, globalData);
     }
    
     form.reset()
