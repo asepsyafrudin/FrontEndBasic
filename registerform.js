@@ -94,11 +94,11 @@ globalData.push(mahasiswa38);
 //make the pagination 
 let currentPage = 1;
 let total_data_per_page = 5;
+let maxPagesShow = 4;
 
 const pagination = (e=1, data = globalData) => {
     let page = ""
     let totalPages = Math.ceil(data.length/total_data_per_page);
-    let maxPagesShow = 4;
     currentPage = e;
     let startPage = 0;
     let endPage = 0;
