@@ -9,71 +9,134 @@
     <script defer src="registerform.js"></script>
 </head>
 <body>
-    <div class="container">
-        <form style="border:1px solid #ccc" onsubmit="saveData(checkFilter())" name="inputData">
-            <div class="container">
-              <h1>Sign Up</h1>
-              <p>Please fill in this form to create an account.</p>
-              <hr>
+  <div class="loginForm">
+    <div class="container login-container">
+          <!-- <div class="col-md-6 login-form-1">
+              <h3>Login for Form 1</h3>
+              <form>
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                  </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" class="btnSubmit" value="Login" />
+                  </div>
+                  <div class="form-group">
+                      <a href="#" class="ForgetPwd">Forget Password?</a>
+                  </div>
+              </form>
+          </div> -->
+          <div class="login-form-2">
+              <h3>Login Form</h3>
+              <form onsubmit="login(event)">
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Email *" value="" id="userName" required/>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Your Password *" value=""  id="password" required/>
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" class="btnSubmit" value="Login" />
+                  </div>
+                  <div class="form-group">
+                      <!-- <a href="#" class="ForgetPwd" value="Login">Forget Password?</a> -->
+                  </div>
+              </form>
+          </div>
+      
+  </div>
+  </div>
+  <div class = "dataList hidden">
+    <form style="border:1px solid #ccc" onsubmit="saveData(checkFilter())" name="inputData" class="hidden">
+        <div class="container">
+          <h1>Form for Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter Name" name="name" required>
+          <input type="hidden" name="index" />
+          <input type="hidden" name="idUser"/>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Your Email" name="email" required>
+
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter Address" name="address" required>
+
+          <label for="place"><b>Place of Birth</b></label>
+          <input type="text" placeholder="Enter Place" name="placeOfBirth" required>
+
+          <label for="place"><b>Birth Date</b></label>
+          <input type="date" name="birthDate">
+
+          <label for="position"><b>Position</b></label>
+          <select id="position" name="position">
+                <option value="Director">Director</option>
+                <option value="General Manager">General Manager</option>
+                <option value="Departement Manager">Departement Manager</option>
+                <option value="Manager">Manager</option>
+                <option value="Staff">Staff</option>
+          </select>
+
+          <label for="religion"><b>Religion</b></label>
+          <select id="religion" name="religion">
+                <option value="Kristen">Kristen</option>
+                <option value="Katolik">Katolik</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Budha">Budha</option>
+                <option value="Islam">Islam</option>
+          </select>
           
-              <label for="name"><b>Name</b></label>
-              <input type="text" placeholder="Enter Name" name="name" required>
-              <input type="hidden" name="index" />
-              <input type="hidden" name="idUser"/>
+          <label for="hobby"><b>Hobby</b></label><br>
+          <div class="form-check form-check-inline"form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkBoxHobby1" name="hobby[]" value="Badminton">
+            <label class="form-check-label" for="checkBoxHobby1">Badminton</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkBoxHobby2" name="hobby[]" value="Renang" >
+            <label class="form-check-label" for="checkBoxHobby2">Renang</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkBoxHobby3" name="hobby[]" value="Sepeda">
+            <label class="form-check-label" for="checkBoxHobby3">Sepeda</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkBoxHobby4" name="hobby[]" value="Football">
+            <label class="form-check-label" for="checkBoxHobby4">Football</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkBoxHobby5" name="hobby[]" value="Basket">
+            <label class="form-check-label" for="checkBoxHobby5">Basket</label>
+          </div>
+          <br>
+          <br>
+          <label for="Gender"><b>Gender</b></label><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="gender_laki-laki" value="Laki-Laki">
+            <label class="form-check-label" for="inlineRadio1">Laki Laki</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="gender_perempuan" value="Perempuan">
+            <label class="form-check-label" for="inlineRadio1">Perempuan</label>
+          </div>
+          <br>
+          <br>
+          <label for="password"><b>Password</b></label>
+          <input type="password" name="password" placeholder="Enter Your Password" required>
+
+          <label for="confirmPassword"><b>Confirm Password</b></label>
+          <input type="password" name="confirmPassword" placeholder="Enter Your Password" required>
+
           
-              <label for="address"><b>Address</b></label>
-              <input type="text" placeholder="Enter Address" name="address" required>
-
-              <label for="religion"><b>Religion</b></label>
-              <select id="religion" name="religion">
-                    <option value="Kristen">Kristen</option>
-                    <option value="Katolik">Katolik</option>
-                    <option value="Hindu">Hindu</option>
-                    <option value="Budha">Budha</option>
-                    <option value="Islam">Islam</option>
-              </select>
-              
-              <label for="hobby"><b>Hobby</b></label><br>
-              <div class="form-check form-check-inline"form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Badminton">
-                <label class="form-check-label" for="inlineCheckbox1">Badminton</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Renang" >
-                <label class="form-check-label" for="inlineCheckbox1">Renang</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Sepeda">
-                <label class="form-check-label" for="inlineCheckbox1">Sepeda</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Football">
-                <label class="form-check-label" for="inlineCheckbox1">Football</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hobby[]" value="Basket">
-                <label class="form-check-label" for="inlineCheckbox1">Basket</label>
-              </div>
-              <br>
-
-
-              <label for="Gender"><b>Gender</b></label><br>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="gender_laki-laki" value="Laki-Laki">
-                <label class="form-check-label" for="inlineRadio1">Laki Laki</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="gender_perempuan" value="Perempuan">
-                <label class="form-check-label" for="inlineRadio1">Perempuan</label>
-              </div>
-              <br>
-              <br>
-              <div class="clearfix" >
-                <button type="submit" class="signupbtn">Sign Up</button>
-              </div>
-            </div>
-          </form>
-    </div>
+          <br>
+          <div class="clearfix" >
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </div>
+        </div>
+      </form>
+    
     <div class="container">
         <input type="text" id="mySearch" onkeyup="searchData(this)" placeholder="Search for names and address..">
     </div>
@@ -87,18 +150,23 @@
                 <th scope="col">Religion</th>
                 <th scope="col">Hobby</th>
                 <th scope="col">Gender</th>
-                <th scope="col" colspan="2">Action</th>
+                <th scope="col">Tempat, Tanggal Lahir</th>
+                <th scope="col">Jabatan</th>
+                <th scope="col" colspan="2" type="admin">Action</th>
               </tr>
             </thead>
             <tbody>
-             <!-- isi yang di dalam table melalui javascript-->
             </tbody>
           </table>
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" name="pagination">
-       </ul>
+      </ul>
     </nav>
+  </div>
+  <div class="footer">
+    <h5>&copy; Copyright 2020 by Asep Syafrudin</h5> 
+</div>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
