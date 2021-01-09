@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="parkirApplication.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="parkirApp.js"></script>
+    <title>Parking Application</title>
+</head>
+<body>
+    <div class="parkingContainer">
+        <div class="login-form-2">
+            <h3>Parkir Masuk</h3>
+            <form onsubmit="enterTicket(event)" name="parkirEntry">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="NO_POL *" value=""  id="NoPolEntry" required/>
+                </div>
+                <br>
+                <select>
+                    <option value="Mobil">Mobil</option>
+                    <option value="Motor">Motor</option>
+                </select>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Enter Ticket" />
+                </div>
+            </form>
+            <br>
+            <br>
+            <hr>
+            <h3>Parkir Keluar</h3>
+            <form onsubmit="parkirOutVehicle()" name="parkirOut">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="NO_POL *" value="" id="No_Pol" required/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Calculate" />
+                </div>
+            </form>
+            <button class="button" onclick="parkirData()"><span>Lihat Data Parkir </span></button>
+        </div>
+        <div class="ticketBox" id="section-to-print">
+            <div class="wahana">
+                Selamat Datang Di Wahana Wisata Curug Nangka
+            </div>
+            <div class="judulTiket">
+                <h3>Ticket Masuk <span></span></h3>
+            </div>
+            <br>
+            <div class="No_Pol">
+                <div>
+                    <h5>No Polisi </h5>
+                </div>
+                <div>
+                    <h5></h5>
+                </div>
+            </div>
+            <div class="entryTime">
+                <div>
+                    <h5>Waktu Masuk</h5>
+                </div>
+                <div>
+                    <h5></h5>
+                </div>
+            </div>
+            <div class="outTime">
+                <div>
+                    <h5>Waktu Keluar</h5>
+                </div>
+                <div>
+                    <h5></h5>
+                </div>
+            </div>
+            <div class="price">
+                <div>
+                    <h5>Biaya Parkir</h5>
+                </div>
+                <div>
+                    <h5></h5>
+                </div>
+            </div>
+            <br>
+            <div class="footerTicket">
+                Tarif Parkir untuk 1 jam pertama : <span></span> dan <span></span> untuk 1 jam Berikutnya
+            </div>
+            <div class="buttonPrint">
+                <!-- Auto width -->
+                <button class="btnPrint" onclick="window.print()" id="print"><i class="fa fa-download"></i> Print</button>
+            </div>
+        </div>
+    </div>
+    <div class="dataParkirList hidden">
+        <button class="button" onclick="parkirData()"><span>Kembali </span></button>
+        <div class="container">
+            <input type="text" id="mySearch" onkeyup="searchData(this)" placeholder="Search No Polisi & Jenis Kendaraan">
+        </div>
+        <div class="container">
+            <table class="table table-striped table-hover" type="listData">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">No Polisi</th>
+                    <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col" style="text-align: center;">Waktu Masuk</th>
+                    <th scope="col" style="text-align: center;">Waktu Keluar</th>
+                    <th scope="col">Biaya Parkir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" name="pagination">
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
